@@ -17,5 +17,28 @@ from . import serializers
 
 
 class RegisterView(CreateAPIView):
+    """user sign up
+
+    Args:
+        CreateAPIView (POST): send email, username, password, phone_number
+    """
+
     serializer_class = serializers.RegisterSerializer
     permission_classes = [AllowAny]
+
+
+class ProfileView(RetrieveAPIView):
+    """get user profile
+
+    Args:
+        RetrieveAPIView (GET): must be authenticated
+
+    Returns:
+        Json: users profile
+    """
+
+    permission_classes = [IsAuthenticated]
+    serializer_class = [serializers.ProfileSerializer]
+
+    def get_object(self):
+        return self.request.user.profile

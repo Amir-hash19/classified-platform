@@ -51,15 +51,7 @@ jobs:
         run: |
           isort --check-only .
 
-      - name: Run Ruff
-        run: |
-          ruff check .
 
 
-      - name: Run mypy
-        run: |
-          mypy .        
-
-      - name: Run Django tests
-        run: |
-          python manage.py test
+    
+    

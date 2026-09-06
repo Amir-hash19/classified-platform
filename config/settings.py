@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "django_filters",
     "drf_spectacular",
     "accounts.apps.AccountsConfig",
+    "categories.apps.CategoriesConfig",
+    "listings.apps.ListingsConfig"
 ]
 
 MIDDLEWARE = [

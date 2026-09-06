@@ -6,20 +6,16 @@ from rest_framework.generics import (
     CreateAPIView,
     ListCreateAPIView,
     RetrieveDestroyAPIView,
-    RetrieveUpdateAPIView
-    
+    RetrieveUpdateAPIView,
 )
-from  . import permissions
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+
 from categories.models import Category
-from . import serializers
 
-
-
-
+from . import permissions, serializers
 
 
 class CategoryListCreateView(ListCreateAPIView):
@@ -28,22 +24,13 @@ class CategoryListCreateView(ListCreateAPIView):
     permission_classes = [permissions.IsStaffOrSuperuserOrReadOnly]
 
 
-
-
 class CategoryRetrieveUpdateView(RetrieveUpdateAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsStaffOrSuperuserOrReadOnly]
 
 
-
 class CategoryRetrieveDestroyView(RetrieveDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsStaffOrSuperuserOrReadOnly]
-
-
-
-
-
-

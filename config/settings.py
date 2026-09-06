@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "accounts.apps.AccountsConfig",
     "categories.apps.CategoriesConfig",
-    "listings.apps.ListingsConfig"
+    "listings.apps.ListingsConfig",
 ]
 
 MIDDLEWARE = [

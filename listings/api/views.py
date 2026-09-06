@@ -4,9 +4,9 @@ from rest_framework.generics import (
     RetrieveUpdateAPIView,
 )
 
-from . import serializers
 from listings.models import Listing
-from . import permissions
+
+from . import permissions, serializers
 
 
 class ListingListCreateView(ListCreateAPIView):

@@ -23,11 +23,30 @@ spec:
         - name: backend
           image: divar-backend:1.0.3
           imagePullPolicy: IfNotPresent
+
           ports:
             - containerPort: 8000
 
           envFrom:
             - secretRef:
                 name: postgres-secret
-            - configMapRef: 
+            - configMapRef:
                 name: backend-config
+
+          livenessProbe:
+            httpGet:
+              path: /health/live/
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /health/ready/
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3

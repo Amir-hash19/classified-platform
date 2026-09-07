@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "categories.apps.CategoriesConfig",
     "listings.apps.ListingsConfig",
+    "health.apps.HealthConfig",
 ]
 
 MIDDLEWARE = [
@@ -160,4 +161,12 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
+}
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Divar Platform API",
+    "DESCRIPTION": "API documentation for Divar Platform",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }

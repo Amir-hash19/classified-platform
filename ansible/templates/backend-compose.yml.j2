@@ -1,0 +1,19 @@
+services:
+
+  backend:
+    image: {{ backend_image }}
+    container_name: {{ project_name }}-backend
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "{{ backend_port }}:8000"
+
+    networks:
+      - {{ postgres_network }}
+
+networks:
+  {{ postgres_network }}:
+    external: true

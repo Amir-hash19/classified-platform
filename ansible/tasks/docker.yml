@@ -1,0 +1,27 @@
+---
+- name: Install required packages
+  apt:
+    name:
+      - docker.io
+      - docker-compose-plugin
+    state: present
+    update_cache: true
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Create project directory
+  file:
+    path: "{{ project_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0755"
+
+- name: Create Docker network
+  community.docker.docker_network:
+    name: "{{ postgres_network }}"
+    state: present

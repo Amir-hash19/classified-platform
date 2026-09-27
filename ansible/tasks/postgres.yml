@@ -1,0 +1,16 @@
+---
+- name: Create PostgreSQL directory
+  file:
+    path: "{{ project_dir }}/postgres"
+    state: directory
+    mode: "0755"
+
+- name: Copy PostgreSQL compose file
+  template:
+    src: postgres-compose.yml.j2
+    dest: "{{ project_dir }}/postgres/docker-compose.yml"
+
+- name: Start PostgreSQL
+  community.docker.docker_compose_v2:
+    project_src: "{{ project_dir }}/postgres"
+    state: present

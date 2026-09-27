@@ -12,11 +12,16 @@
     mode: "0600"
 
 - name: Copy backend compose file
+
+
+
   template:
     src: backend-compose.yml.j2
     dest: "{{ project_dir }}/backend/docker-compose.yml"
 
 - name: Start backend
   community.docker.docker_compose_v2:
+
+
     project_src: "{{ project_dir }}/backend"
     state: present
